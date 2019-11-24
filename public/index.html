@@ -1,0 +1,37 @@
+<!doctype html>
+<html>
+    <body>
+        For the params needed go to: Access->Federation->OAuth Authorization Server->Client Application-><client app name> <br />
+        OR <br />
+        tmsh list apm oauth oauth-client-app "<client app name>" (this will hold all info for testing purposes) <br />
+        tmsh list apm profile oauth <em>"<oauth profile name>"</em> (client-apps will list the ca_list param) <br />
+        Example: <br />
+        # tmsh list apm oatuh oauth-client-app oauthTestApp <br />
+        <pre>
+            <code>
+                    apm oauth oauth-client-app /Common/oauthTestApp { <------ ca_list param
+                        app-name "Test API"
+                        client-id 1776ade0a3d4be528f3c3728c9520050568666346443565b  <------- client id
+                        client-secret 2d36710bb5133b8bdfd5dce4fbde0050568666346443565b <------ client secret
+                        customization-group /Common/oauthTestApp_oauth_authz_client_app_customization
+                        grant-code enabled
+                        redirect-uris { https://www.getpostman.com/oauth2/callback }
+                        scopes {
+                            /Common/oauth_Scope { } <------ scope_list param
+                        }
+                    }  
+            </code>
+        </pre>
+        <form action="/post" method="POST">
+            Hostname (just host portion. eg: foo.bar.com): <input type="text" name="hostname" /><br />
+            JWT Token? <input type="checkbox" name="jwt" value="JWT" /><br />
+            Add State? <input type="checkbox" name="state" value="State" /><br />
+            Redirect URI: <input type="text" name="redirecturl" required /><br />
+            Client ID: <input type="text" name="clientid" required /><br />
+            Client Secret: <input type="text" name="clientsecret" required /><br />
+            Client Apps List: <input type="text" name="ca_list" required /><br />
+            Scope List: <input type="text" name="scope_list" required /><br />
+            <input type="submit" value="Submit" />
+        </form>
+    </body>
+</html>

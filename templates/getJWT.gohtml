@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Get JWT</title>
+</head>
+<body>
+    <form method="POST" action={{.Endpoint.TokenURL}}>
+        Grant Type: <input type="text" name="grant_type" value="authorization_code" /><br />
+        Token Code: <input type="text" name="code" value={{.Code}} /><br />
+        Redirect URI: <input type="text" name="redirect_uri" value={{.RedirectURL}} /><br />
+        Client ID: <input type="text" name="client_id" value={{.ClientID}} /><br />
+        Client Secret: <input type="text" name="client_secret" value={{.ClientSecret}} /><br />
+        Token Content Type: <input type="text" name="token_content_type" value="jwt" /><br />
+        <input type="submit" name="Submit" value="Submit" />
+    </form>
+</body>
+</html>
